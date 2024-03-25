@@ -1,10 +1,13 @@
 import React from "react";
 
-function TodoRowItem({ rowNumber, rowDescription, rowAssigned }) {
+function TodoRowItem({ rowNumber, rowDescription, rowAssigned, deleteTodo }) {
+  function handleClick() {
+    deleteTodo(rowNumber);
+  }
   return (
-    <tr>
+    <tr onClick={handleClick}>
       <th scope="row">{rowNumber}</th>
-      <td>{rowDescription} Xola</td>
+      <td>{rowDescription}</td>
       <td>{rowAssigned}</td>
     </tr>
   );
