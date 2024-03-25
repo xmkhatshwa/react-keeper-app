@@ -11,6 +11,8 @@ function App() {
     { rowNumber: 3, rowDescription: "Lula", rowAssigned: "Nxumalo" },
   ]);
 
+  const [isAddNewTodo, setIsAddNewTodo] = useState(false);
+
   const addTodo = (description, assigned) => {
     let rowNumber = 0;
     if (todos.length > 0) {
@@ -26,12 +28,12 @@ function App() {
     setTodos((todos) => [...todos, newTodo]);
   };
 
-  const deleteTodo = (deleteTodoRowNumber) => {
+  function deleteTodo(deleteTodoRowNumber) {
     let filtered = todos.filter(function (value) {
       return value.rowNumber !== deleteTodoRowNumber;
     });
     setTodos(filtered);
-  };
+  }
 
   return (
     <div className="mt-5 container">
@@ -40,7 +42,16 @@ function App() {
         <div className="card-body"></div>
         <TodoTable todosList={todos} deleteTodo={deleteTodo} />
 
-        <NewTodoForm addTodo={addTodo} />
+        <div className="mt-2">
+          <button
+            type="button"
+            className="btn btn-primary mt-3 ml-3"
+            onClick={() => setIsAddNewTodo(!isAddNewTodo)}
+          >
+            Add New Todo
+          </button>
+        </div>
+        {isAddNewTodo && <NewTodoForm addTodo={addTodo} />}
       </div>
     </div>
   );

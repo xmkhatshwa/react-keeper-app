@@ -30,7 +30,7 @@ function NewTodoForm({ addTodo }) {
 
   return (
     <div className="mt-5">
-      <form>
+      <form className="ml-5">
         <div className="mb-3">
           <label className="form-label">Assigned</label>
           <input
@@ -55,7 +55,7 @@ function NewTodoForm({ addTodo }) {
         </div>
         <button
           type="button"
-          className="btn btn-primary mt-3"
+          className="btn btn-primary mt-3 ml-3"
           onClick={submitTodo}
         >
           Add Todo
